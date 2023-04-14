@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style>
+		body {
+			background-color: #c697ec;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		#calculator {
+			background-color: black;
+			border: 5px solid #4B0082;
+			padding: 20px;
+			display: inline-block;
+			text-align: center;
+		}
+		input[type=button] {
+			background-color: #EE82EE;
+			color: white;
+			font-size: 16px;
+			width: 40px;
+			height: 40px;
+			border: none; 
+			margin: 2px;
+		}
+		input[type=text] {
+			background-color: #E6E6FA;
+			color: #4B0082;
+			font-size: 20px;
+			width: 160px;
+			height: 40px;
+			border: none;
+			margin: 2px;
+			text-align: right;
+			padding-right: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="calculator">
+		<input type="text" id="result" readonly>
+		<div>
+			<input type="button" value="1" onclick="addToInput('1')">
+			<input type="button" value="2" onclick="addToInput('2')">
+			<input type="button" value="3" onclick="addToInput('3')">
+			<input type="button" value="+" onclick="addToInput('+')">
+		</div>
+		<div>
+			<input type="button" value="4" onclick="addToInput('4')">
+			<input type="button" value="5" onclick="addToInput('5')">
+			<input type="button" value="6" onclick="addToInput('6')">
+			<input type="button" value="-" onclick="addToInput('-')">
+		</div>
+		<div>
+			<input type="button" value="7" onclick="addToInput('7')">
+			<input type="button" value="8" onclick="addToInput('8')">
+			<input type="button" value="9" onclick="addToInput('9')">
+			<input type="button" value="*" onclick="addToInput('*')">
+		</div>
+		<div>
+			<input type="button" value="0" onclick="addToInput('0')">
+			<input type="button" value="/" onclick="addToInput('/')">
+			<input type="button" value="C" onclick="clearInput()">
+			<input type="button" value="=" onclick="calculate()">
+		</div>
+	</div>
+	
+	<script>
+		let input = '';
+		let result = document.getElementById('result');
+		
+		function addToInput(val) {
+			input += val;
+			result.value = input;
+		}
+		
+		function clearInput() {
+			input = '';
+			result.value = '';
+		}
+		
+		function calculate() {
+			try {
+				input = eval(input);
+				result.value = input;
+			} catch (error) {
+				alert('Invalid input');
+			}
+		}
+	</script>
+</body>
+</html>
